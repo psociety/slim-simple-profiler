@@ -72,6 +72,7 @@ class Profiler
         $actions = 'Please enable determineRouteBeforeAppMiddleware';
         if ($route) {
             $actions = $route->getCallable();
+
             if (is_array($route->getCallable())) {
                 $actions = sprintf("%s:%s", get_class($route->getCallable()[0] ?? null), $route->getCallable()[1] ?? null);
             }
@@ -82,7 +83,7 @@ class Profiler
             'response' => empty($contents) ? $this->note : $contents,
             'uri' => $meta['uri'],
             'method' => $meta['method'],
-            'action' => $actions,
+            //'action' => $actions,
             'dataParams' => json_encode($dataParams, JSON_PRETTY_PRINT),
             'dataBody' => json_encode($dataBody, JSON_PRETTY_PRINT),
             'execTime' => sprintf("%s (%s)", $time['duration_str'], $time['duration']),
